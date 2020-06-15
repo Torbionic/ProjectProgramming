@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+from .models import CEO
+
+
+class CEOView(ListView):
+    model = CEO
+    template_name = 'landing/index.html'
+
