@@ -1,0 +1,35 @@
+{% extends "landing/base.html" %}
+{%load crispy_forms_tags%}
+{%load static%}
+
+{% block content %}
+
+<div class="container-fluid"> <!---fluid-->
+    <div class="row">
+        <div class="col-md-2" style="background-color: #00FC">
+        </div>
+        <div class="col-md-8" style="background-color: #99CCFF">
+           <h2>Список директоров:</h2>
+            {% for cc in object_list  %}
+            <div>
+                <h2>{{ cc.author }} </h2>
+                <h2>{{ cc.text }} </h2>
+                <h2>{{ cc.date_create }} </h2>
+            </div>
+            {% endfor %}
+            <h2>Блог</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="p-2 btn btn-secondary">Отправить</button><br><br>
+                </form>
+
+        </div>
+        <div class="col-md-2" style="background-color: #00CC99">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
