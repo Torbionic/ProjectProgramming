@@ -1,0 +1,27 @@
+{% extends "landing/base.html" %}
+{%load crispy_forms_tags%}
+{%load static%}
+
+{% block content %}
+
+<div class="container-fluid"> <!---fluid-->
+    <div class="row">
+        <div class="col-md-2" style="background-color: #00FC">
+        </div>
+        <div class="col-md-8" style="background-color: #99CCFF">
+            <h2>Редактирование записи</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="p-2 btn btn-secondary">Изменить запись</button><br><br>
+                </form>
+
+        </div>
+        <div class="col-md-2" style="background-color: #00CC99">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

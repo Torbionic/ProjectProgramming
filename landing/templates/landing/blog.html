@@ -15,6 +15,12 @@
                 <h2>{{ cc.author }} </h2>
                 <h2>{{ cc.text }} </h2>
                 <h2>{{ cc.date_create }} </h2>
+                <p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'blog_update' pk=cc.pk %}"> Изменить </a>
+                <a href="{% url 'blog_delete' pk=cc.pk %}"> Удалить </a>
+                {% endif %}
+                </p>
             </div>
             {% endfor %}
             <h2>Блог</h2>

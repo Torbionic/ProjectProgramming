@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import register, ProfileView
+from .views import register, ProfileView, ProfileUpdateView
 from django.contrib.auth import views as authViews
 
 
@@ -13,4 +13,7 @@ urlpatterns = [
          name='exit'),
     path('profile/', ProfileView.as_view(),
          name='profile'),
+    path('profile/<int:pk>/', ProfileUpdateView.as_view(),
+         name='profile_update'),
+
 ]

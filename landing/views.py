@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import CEO, Blog
 from .forms import BlogForm
 
@@ -22,3 +21,18 @@ class BlogView(SuccessMessageMixin, CreateView, ListView):
     form_class = BlogForm
     success_url = '/'
     success_message = "Ваше сообщение отправлено!"
+
+class BlogUpdate(SuccessMessageMixin, UpdateView):
+    model = Blog
+    fields = ['text']
+    template_name = 'landing/blog_update.html'
+    success_url = '/blog'
+    success_message = "Запись сохранена!"
+
+class BlogDelete(SuccessMessageMixin, DeleteView):
+    model = Blog
+    template_name = 'landing/blog_delete.html'
+    success_url = '/blog'
+    success_message = "Запись удалена!"
+
+
